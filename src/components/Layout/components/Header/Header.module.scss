@@ -1,4 +1,100 @@
 .wrapper {
-    height: 60px;
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-bottom-width: 52px;
+
+    height: var(--default-layout-header-side);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
 } 
+
+.inner {
+    height: 100%;
+    width: var(--default-layout-width);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search {
+    width: 316px;
+    height: var(--search-height);
+    padding-left: 16px;
+    display: flex;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    border: 1px solid transparent;
+    position: relative;
+
+    input {
+        flex: 1;
+        height: 100%;
+        color: var(--black);
+        font-size: 1.6rem;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        caret-color: var(--primary);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn{
+        color: rgb(76 78 87);;
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+
+.clear,
+.loading {
+    position: absolute;
+    right: calc(var(--search-bottom-width) + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search-btn {
+    position: relative;
+    width: var(--search-bottom-width);
+    height: 100%;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);;
+
+    &:hover {
+        background-color: rgb(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: rgb(22, 24, 35, 0.06);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        top: var(--search-top-spacer);
+        right: var(--search-bottom-width);
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+        background-color: rgb(217 217 217);;
+    }
+}
+
+button, input, [tabindex] {
+    outline: none;
+    border: none;
+
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
+}

@@ -3,9 +3,17 @@
 
 :root {
     --primary: #FF3B5C;
+    --black: #000;
+    --text-color: #333;
+
+    // default layout
+    --default-layout-header-side: 60px;
+    --default-layout-width: 1150px;
 }
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
