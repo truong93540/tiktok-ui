@@ -1,9 +1,13 @@
 .wrapper {
-    font-size: 1.6rem;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-width: 100px;
     padding: 9px 16px;
     border-radius: 4px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: var(--font-family);
     cursor: pointer;
     background-color: var(--white);
     border: 1px solid transparent;
@@ -25,7 +29,7 @@
 }
 
 .rounded {
-    border-radius: 999px ;
+    border-radius: 999px;
     box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
     border-color: rgba(22, 24, 35, 0.12);
 
@@ -40,7 +44,7 @@
     background-color: var(--primary);
     color: var(--white);
     border-color: var(--primary);
-    
+
     &:hover {
         border-color: var(--primary);
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), rgb(254, 44, 85);
@@ -50,20 +54,18 @@
 .outline {
     color: var(--primary);
     border-color: currentColor;
-    
+
     &:hover {
         border-color: currentColor;
         background-color: rgba(254, 44, 85, 0.06);
     }
-    
+
     .text {
         &:hover {
             text-decoration: underline;
         }
     }
 }
-
-
 
 // Button size
 .small {

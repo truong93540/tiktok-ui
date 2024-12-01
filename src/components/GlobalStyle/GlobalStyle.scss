@@ -1,11 +1,10 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
 :root {
-    --primary: #FF3B5C;
+    --primary: #ff3b5c;
     --black: #000;
     --text-color: #333;
     --white: #fff;
+    --font-family: 'TikTokFont', sans-serif;
 
     // default layout
     --default-layout-header-side: 60px;
@@ -24,36 +23,100 @@ html {
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    overflow-y: overlay;
+}
+
+// Scrollbar css
+
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
 }
 
 a[href] {
     color: var(--text-color);
     text-decoration: none;
-    display: block;
+}
+
+// Fonts embeded
+@font-face {
+    font-family: TikTokFont;
+    src: url('/attsets/fonts/TikTokFont-Regular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/attsets/fonts/TikTokFont-Semibold.woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/attsets/fonts/TikTokDisplayFont-Bold.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/attsets/fonts/TikTokDisplayFont-Bold.woff2');
+    font-weight: 700;
 }
 
 // Custom tippy tooltip
 body {
     .tippy-box {
-    border-radius: 8px;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-    background-color: rgba(84, 84, 84, 0.92);
+        border-radius: 8px;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        background-color: rgba(84, 84, 84, 0.92);
     }
 
-    .tippy-arrow{
+    .tippy-arrow {
         color: rgba(84, 84, 84, 0.92);
     }
-    
-    .tippy-box[data-placement^=bottom]>.tippy-arrow:before{
+
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
         top: -8px;
     }
 
-    .tippy-content{
+    .tippy-content {
         padding: 8px 9px;
     }
 }

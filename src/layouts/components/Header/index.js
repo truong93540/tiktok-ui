@@ -1,32 +1,28 @@
-import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
-    faCircleXmark,
-    faCloudArrowUp,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
     faGear,
     faKeyboard,
-    faMagnifyingGlass,
     faPlay,
     faRightToBracket,
-    faSpinner,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
+import config from '~/config';
 import Button from '~/components/Button';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AcountItem from '~/components/AcountItem';
 import styles from './Header.module.scss';
 import images from '~/attsets/images';
 import Menu from '~/components/Popper/Menu';
-import { faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { MessageIcon, MessageIcon2, UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -62,15 +58,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -115,43 +103,29 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
-                <HeadlessTippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
+                <Link to={config.routers.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
 
-                                <AcountItem />
-                                <AcountItem />
-                                <AcountItem />
-                                <AcountItem />
-                                <AcountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" spellCheck={false}></input>
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search />
 
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon width="2.5rem" height="2.5rem" />
+                                </button>
+                            </Tippy>
+
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon2 width="2.9rem" height="2.9rem" />
                                 </button>
                             </Tippy>
                         </>
@@ -163,10 +137,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
-                                src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/452062225_1208553763660643_401970793568623400_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGmHzK3fmdUcZ5g2VzvzFIqZSBx0jFe3Q1lIHHSMV7dDTjXM46R_aC-23lc68AYMNZvmOz0nOiMF4UmhP_oyxEq&_nc_ohc=qLiHe52ggVMQ7kNvgGZ7gNZ&_nc_zt=23&_nc_ht=scontent.fhan2-3.fna&_nc_gid=APvUHqY47O8X4eL-KCD9wqg&oh=00_AYAS8crXVRXMJjiD83cFoBtDZD9MsK74XgYnuqaZeY-Qfw&oe=674A0C78"
+                            <Image
+                                src="https://sconten.fhan2-3.fna.fbcdn.net/v/t39.30808-6/452062225_1208553763660643_401970793568623400_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGmHzK3fmdUcZ5g2VzvzFIqZSBx0jFe3Q1lIHHSMV7dDTjXM46R_aC-23lc68AYMNZvmOz0nOiMF4UmhP_oyxEq&_nc_ohc=qLiHe52ggVMQ7kNvgGZ7gNZ&_nc_zt=23&_nc_ht=scontent.fhan2-3.fna&_nc_gid=APvUHqY47O8X4eL-KCD9wqg&oh=00_AYAS8crXVRXMJjiD83cFoBtDZD9MsK74XgYnuqaZeY-Qfw&oe=674A0C78"
                                 className={cx('user-avatar')}
                                 alt="Nguyễn Văn Trường"
+                                fallBack="https://scontent.fhan2-4.fna.fbcdn.net/v/t39.30808-1/292811142_468439335283069_2463653578059021674_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=1&ccb=1-7&_nc_sid=f4b9fd&_nc_eui2=AeGts28t4o3rL3lALU-ivI1xw1eky--bmaLDV6TL75uZokJOoSYrY4kSeQtFrq3tXcy7IK8QVKVnUswd9-7UPSEk&_nc_ohc=MrqngnkiFj0Q7kNvgGQzm1t&_nc_zt=24&_nc_ht=scontent.fhan2-4.fna&_nc_gid=AA4buT5aBlBzLoDa9F_Q4z-&oh=00_AYBkHN_mIWwd_qthHJoQTcROiNCL35wCl7eVSAHvMx3bBw&oe=674E7075"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
