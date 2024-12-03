@@ -69,7 +69,7 @@ input,
     border: none;
 }
 
-a[href] {
+a {
     color: var(--text-color);
     text-decoration: none;
 }
@@ -77,25 +77,25 @@ a[href] {
 // Fonts embeded
 @font-face {
     font-family: TikTokFont;
-    src: url('/attsets/fonts/TikTokFont-Regular.woff2');
+    src: url('/assets/fonts/TikTokFont-Regular.woff2');
     font-weight: 400;
 }
 
 @font-face {
     font-family: TikTokFont;
-    src: url('/attsets/fonts/TikTokFont-Semibold.woff2');
+    src: url('/assets/fonts/TikTokFont-Semibold.woff2');
     font-weight: 600;
 }
 
 @font-face {
     font-family: TikTokFont;
-    src: url('/attsets/fonts/TikTokDisplayFont-Bold.woff2');
+    src: url('/assets/fonts/TikTokDisplayFont-Bold.woff2');
     font-weight: 700;
 }
 
 @font-face {
     font-family: TikTokFont;
-    src: url('/attsets/fonts/TikTokDisplayFont-Bold.woff2');
+    src: url('/assets/fonts/TikTokDisplayFont-Bold.woff2');
     font-weight: 700;
 }
 
